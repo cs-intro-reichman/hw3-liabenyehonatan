@@ -56,15 +56,21 @@ public class Anagram {
 
 		String newStr = "";
 		int i = 0;
+
 		while (i < str.length()) {
 			char c = str.charAt(i);
+
 			if (Character.isLetter(c)) {
 				newStr = newStr + Character.toLowerCase(c);
-			} else {
+			} else if (Character.isDigit(c)) {
 				newStr = newStr + c;
+			} else if (c == ' ') {
+				newStr = newStr + ' ';
 			}
+
 			i++;
 		}
+
 		return newStr;
 	}
 
