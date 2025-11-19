@@ -60,6 +60,8 @@ public class Anagram {
 			char c = str.charAt(i);
 			if (Character.isLetter(c)) {
 				newStr = newStr + Character.toLowerCase(c);
+			} else {
+				newStr = newStr + c;
 			}
 			i++;
 		}

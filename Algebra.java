@@ -102,18 +102,40 @@ public class Algebra {
 
 	}
 
-	// Returns the integer part of x1 / x2
 	public static int div(int x1, int x2) {
-		int num = x2;
-		int steps = 1;
-		if (x1 == x2) {
-			return 1;
+
+		if (x2 == 0) {
+			return 0;
 		}
-		while (num <= x1) {
-			num = plus(num, num);
-			steps++;
+
+		boolean negative = false;
+
+		if (x1 < 0) {
+			x1 = minus(0, x1);
+			negative = !negative;
 		}
-		return steps;
+		if (x2 < 0) {
+			x2 = minus(0, x2);
+			negative = !negative;
+		}
+
+		if (x1 == 0) {
+			return 0;
+		}
+
+		int count = 0;
+		int sum = 0;
+
+		while (sum + x2 <= x1) {
+			sum = plus(sum, x2);
+			count++;
+		}
+
+		if (negative) {
+			count = minus(0, count);
+		}
+
+		return count;
 	}
 
 	// Returns x1 % x2
@@ -126,10 +148,16 @@ public class Algebra {
 
 	// Returns the integer part of sqrt(x)
 	public static int sqrt(int x) {
-		int i = 1;
-		while (times(i, i) < x) {
-			i++;
+		if (x == 0) {
+			return 0;
 		}
-		return i;
+
+		int i = 1;
+		while (times(i, i) <= x) {
+			plus(i, 1);
+		}
+
+		return minus(i, 1);
 	}
+
 }
