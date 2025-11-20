@@ -37,7 +37,7 @@ public class Anagram {
 		}
 
 		while (newStr1.length() > 0) {
-			boolean match = true;
+			boolean match = false;
 			for (int i = 0; i < newStr2.length(); i++) {
 				if (newStr2.charAt(i) == newStr1.charAt(0)) {
 					newStr1 = newStr1.substring(1);
