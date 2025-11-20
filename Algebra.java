@@ -152,12 +152,15 @@ public class Algebra {
 			return 0;
 		}
 
-		int i = 1;
-		while (times(i, i) <= x) {
-			plus(i, 1);
+		for (int i = 1; i <= x; i++) {
+			if (times(i, i) == x) {
+				return i;
+			}
+			if (times(i, i) > x) {
+				return minus(i, 1);
+			}
 		}
+		return -1;
 
-		return minus(i, 1);
 	}
-
 }
